@@ -8,6 +8,7 @@
   </view>
   <!-- 当前时间box -->
   <text class='time-bar'>周三 10月15号 10:15</text>
+  <button type="primary" opentype="openSetting">授权地理位置</button>
 
   <!-- 汽油价格box -->
   <view class='gas-price-box'>
