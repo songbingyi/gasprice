@@ -11,14 +11,11 @@ page {
   display: flex;
   flex-direction: row;
   margin-top: 30px;
+  align-items: baseline;
 }
-
-.location-bar  image {
-  width: 52rpx;
-  height: 52rpx;
-  font-size: 52rpx;
-}
-
+.icon-location {
+    font-size: 30rpx;
+    }
 .location-bar text {
   font-weight: bold;
   padding: 0 20rpx;

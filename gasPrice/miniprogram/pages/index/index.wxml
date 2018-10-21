@@ -2,13 +2,13 @@
 <view class="container">
   <!-- 当前位置box -->
   <view class='location-bar'>
-    <image src='../../images/location.png'></image>
-    <text>陕西省西安市</text>
-    <image src='../../images/arrow-down.png'></image>
+    <icon wx:if="hasLocation" class="icon-location"></icon>
+    <text>陕西省 西安市</text>
+    <icon class="icon-more"></icon>
   </view>
   <!-- 当前时间box -->
   <text class='time-bar'>周三 10月15号 10:15</text>
-  <button type="primary" opentype="openSetting">授权地理位置</button>
+  <!-- <button type="primary" open-type="openSetting" bindopensetting="handle">授权地理位置</button> -->
 
   <!-- 汽油价格box -->
   <view class='gas-price-box'>
