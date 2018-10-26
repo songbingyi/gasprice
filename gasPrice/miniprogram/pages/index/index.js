@@ -25,8 +25,11 @@ Page({
       wx.cloud.callFunction({
           name: 'getMoji',
           data: {
-              lat:"108",
-              lon:"116"
+            url:'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefcondition',
+            data:{
+              lat: "108",
+              lon: "116"
+            }
               },
           success: res => {
               console.log(res)
