@@ -23,12 +23,16 @@ Page({
       }
     })
       wx.cloud.callFunction({
-          name: 'getMoji',
+          name: 'getCity',
           data: {
-            url:'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefcondition',
-            data:{
+            url:'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefforecast3days',
+            formData:{
               lat: "108",
               lon: "116"
+            },
+            userInfo: {
+              "appId": "wxc3f44eb0460fbdfe",
+              "openId": "oaoLb4qz0R8STBj6ipGlHkfNCO2Q"
             }
               },
           success: res => {

@@ -5,17 +5,16 @@ cloud.init()
 
 // 云函数入口函数
 
-const url = 'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefforecast3days';
-
 //默认经纬度城市:北京
-let cityJW = {
+let formData = {
   lat: '39.91488908',
   lon: '116.40387397'
-},
+};
+let url = 'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefforecast3days';
 const options = {
   method: 'POST',
   url: url,
-  formData: cityJW,
+  formData: formData,
   headers: {
     'Authorization': 'APPCODE 312a0ea7c23b419e967bbf80f72cbc21'
   }
@@ -24,11 +23,12 @@ const options = {
 cloud.init()
 
 exports.main = async(event, context) => {
-  //如果不穿值，默认北京
-  if (event.cityLocation) {
-    formData.cityLocation = event.cityLocation;
+  // 如果不传值，默认北京
+  console.log(event)
+  if (event.formData) {
+    formData = event.formData;
   }
-  options.url = event.url
+  // url = event.url;
   const result = rp(options).then(function(body) {
     console.log(body)
     return body
@@ -37,6 +37,5 @@ exports.main = async(event, context) => {
     return err
   });
   return result
-
 
 }
