@@ -1,87 +1,99 @@
 /**index.wxss**/
 
 page {
-  background: -webkit-linear-gradient(#74b6e7, #fff); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(#74b6e7, #fff); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(#74b6e7, #fff); /* Firefox 3.6 - 15 */
-  background: linear-gradient(#74b6e7, #fff); /* 标准的语法 */
+    background: -webkit-linear-gradient(#74b6e7, #fff); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#74b6e7, #fff); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#74b6e7, #fff); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#74b6e7, #fff); /* 标准的语法 */
 }
 
 .location-bar {
-  display: flex;
-  flex-direction: row;
-  margin-top: 30px;
-  align-items: baseline;
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    align-items: baseline;
 }
+
 .icon-location {
     font-size: 30rpx;
-    }
+}
+
 .location-bar text {
-  font-weight: bold;
-  padding: 0 20rpx;
+    font-weight: bold;
+    padding: 0 20rpx;
 }
 
 .time-bar {
-  padding-top: 24px;
-  font-size: 32rpx;
+    margin-top: 48rpx;
+    font-size: 32rpx;
 }
 
+.auz-bar {
+    margin-top: 48rpx;
+    font-size: 28rpx;
+    width: 76%;
+    background-color: #75b6e6;
+    padding: 10px;
+}
+.auz-btn {
+    margin-top: 40rpx;
+}
 .gas-price-box {
-  display: inline-block;
-  width: 76%;
-  margin-top: 40px;
+    display: inline-block;
+    width: 76%;
+    margin-top: 70rpx;
 }
 
 .gas-price-item {
-  background-color: #f7fbfe;
-  border-radius: 10px;
-  padding: 16rpx 48rpx;
-  font-size: 32rpx;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+    background-color: #f7fbfe;
+    border-radius: 10px;
+    padding: 16rpx 48rpx;
+    font-size: 32rpx;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .tips-box {
-  margin-top: 20px;
-  width: 100%;
-  padding: 18rpx 0;
-  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4, rgba(0, 0, 0, 0)); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4, rgba(0, 0, 0, 0)); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4, rgba(0, 0, 0, 0)); /* Firefox 3.6 - 15 */
-  background: linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4, rgba(0, 0, 0, 0)); /* 标准的语法（必须放在最后） */
-  text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    padding: 18rpx 0;
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4, rgba(0, 0, 0, 0)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4, rgba(0, 0, 0, 0)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4, rgba(0, 0, 0, 0)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4, rgba(0, 0, 0, 0)); /* 标准的语法（必须放在最后） */
+    text-align: center;
 }
 
 .tips-box text {
-  font-size: 28rpx;
+    font-size: 28rpx;
 }
 
 .spt {
-  display: inline-block;
-  height: 60rpx;
-  width: 1rpx;
-  background-color: rgb(168, 166, 166);
-  align-self:center;
+    display: inline-block;
+    height: 60rpx;
+    width: 1rpx;
+    background-color: rgb(168, 166, 166);
+    align-self: center;
 }
 
 .weather-box {
-  background-color: #edf4fa;
-  font-size: 30rpx;
-  width: 100%;
-  margin-top: 40px;
-  display: flex;
-  justify-content: space-between;
+    background-color: #edf4fa;
+    font-size: 30rpx;
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .today-box, .tomorrow-box {
-  padding: 20rpx;
-  width: 40%;
+    padding: 20rpx;
+    width: 40%;
 }
 
 .row1, .row2 {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* page {

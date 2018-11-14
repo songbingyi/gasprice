@@ -1,66 +1,80 @@
 <!--index.wxml-->
 <view class="container">
-  <!-- 当前位置box -->
-  <view class='location-bar'>
-    <icon wx:if="hasLocation" class="icon-location"></icon>
-    <text>陕西省 西安市</text>
-    <icon class="icon-more"></icon>
-  </view>
-  <!-- 当前时间box -->
-  <text class='time-bar'>周三 10月15号 10:15</text>
-  <!-- <button type="primary" open-type="openSetting" bindopensetting="handle">授权地理位置</button> -->
+    <!-- 当前位置box -->
 
-  <!-- 汽油价格box -->
-  <view class='gas-price-box'>
-    <view class='gas-price-item'>
-      <text>89#汽油</text>
-      <text>7.56<text>元/升</text></text>
-    </view>
-    <view class='gas-price-item'>
-      <text>92#汽油(93#)</text>
-      <text>7.56<text>元/升</text></text>
-    </view>
-    <view class='gas-price-item'>
-      <text>95#汽油(97#)</text>
-      <text>7.56<text>元/升</text></text>
-    </view>
-    <view class='gas-price-item'>
-      <text>0#柴油(93#)</text>
-      <text>7.56<text>元/升</text></text>
-    </view>
-  </view>
-  <!-- 温馨提示box -->
-  <view class='tips-box'>
-    <text>预计下次油价上涨日期：2018.10.15</text>
-  </view>
-  <!-- 今明天气 -->
-  <view class='weather-box'>
 
-    <view class='today-box'>
-      <view class='row1'>
-        <text>今天</text>
-        <text>良</text>
-      </view>
-      <view class='row2'>
-        <text>晴</text>
-        <text>21/9°C</text>
-      </view>
-    </view>
-    <view class='spt'></view>
-    <view class='tomorrow-box'>
-      <view class='row1'>
-        <text>明天</text>
-        <text>良</text>
-      </view>
-      
-      <view class='row2'>
-        <text>晴</text>
-        <text>21/9°C</text>
-      </view>
-    </view>
+    <!-- <text>陕西省 西安市</text> -->
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" >
+        <view class="picker" class='location-bar'>
+            <icon hidden="{{hiddenLocation}}" class="icon-location"></icon>
+            {{region[0]}} {{region[1]}}
+            <icon class="icon-more"></icon>
+        </view>
 
-  </view>
+    </picker>
+    <!-- 当前时间box -->
+    <text class='time-bar' hidden='{{hiddenLocation}}'> {{formatTime.m}}月{{formatTime.d}}号 {{formatTime.w}}</text>
+    <!--未授权地理位置box-->
+    <view class='auz-bar' hidden="{{hiddenLocation == false}}">
+        <text>请点击上方城市名称选择需要查询的城市
+        或点击"授权位置"进行位置授权设置。</text>
+    </view>
+    <button hidden="{{hiddenLocation  == false}}" type="primary" size='mini' open-type="openSetting" class="auz-btn" bindopensetting="handle">授权地理位置</button>
+
+    <!-- 汽油价格box -->
+    <view class='gas-price-box'>
+        <view class='gas-price-item'>
+            <text>89#汽油</text>
+            <text>7.56<text>元/升</text></text>
+        </view>
+        <view class='gas-price-item'>
+            <text>92#汽油(93#)</text>
+            <text>7.56<text>元/升</text></text>
+        </view>
+        <view class='gas-price-item'>
+            <text>95#汽油(97#)</text>
+            <text>7.56<text>元/升</text></text>
+        </view>
+        <view class='gas-price-item'>
+            <text>0#柴油(93#)</text>
+            <text>7.56<text>元/升</text></text>
+        </view>
+    </view>
+    <!-- 温馨提示box -->
+    <view class='tips-box'>
+        <text>预计下次油价上涨日期：2018.10.15</text>
+    </view>
+    <!-- 今明天气 -->
+    <view class='weather-box'>
+
+        <view class='today-box'>
+            <view class='row1'>
+                <text>今天</text>
+                <text>良</text>
+            </view>
+            <view class='row2'>
+                <text>晴</text>
+                <text>21/9°C</text>
+            </view>
+        </view>
+        <view class='spt'></view>
+        <view class='tomorrow-box'>
+            <view class='row1'>
+                <text>明天</text>
+                <text>良</text>
+            </view>
+
+            <view class='row2'>
+                <text>晴</text>
+                <text>21/9°C</text>
+            </view>
+        </view>
+
+    </view>
 </view>
+
+
+
 
 <!-- 墨迹天气API返回数据
 {"code":0,"data":{"city":{"cityId":2253,"counname":"中国","name":"洋县","pname":"陕西省","timezone":"8"}},"msg":"success","rc":{"c":0,"p":"success"}} -->

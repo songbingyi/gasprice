@@ -1,5 +1,5 @@
 {
-  "name": "getMoji",
+  "name": "getWeatherInfo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "wx-server-sdk": "latest"
   }
