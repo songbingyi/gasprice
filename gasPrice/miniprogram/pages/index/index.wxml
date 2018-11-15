@@ -20,6 +20,7 @@
         或点击"授权位置"进行位置授权设置。</text>
     </view>
     <button hidden="{{hiddenLocation  == false}}" type="primary" size='mini' open-type="openSetting" class="auz-btn" bindopensetting="handle">授权地理位置</button>
+    
 
     <!-- 汽油价格box -->
     <view class='gas-price-box'>
@@ -71,8 +72,9 @@
         </view>
 
     </view>
+    
+<button type='primary' bindtap='getGasPrice'>获取油价</button>
 </view>
-
 
 
 

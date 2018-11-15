@@ -7,18 +7,9 @@ cloud.init()
 cloud.init()
 
 exports.main = async (event, context) => {
-    if (event.formData) {
-        formData = event.formData;
-    } else {
-        formData = {
-            lat: '39.91488908',
-            lon: '116.40387397'
-        }
-    };
     let options = {
-        method: 'POST',
-        url: 'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefforecast3days',
-        formData: formData,
+        method: 'GET',
+        url: 'http://ali-todayoil.showapi.com/todayoil',
         headers: {
             'Authorization': 'APPCODE 312a0ea7c23b419e967bbf80f72cbc21'
         }

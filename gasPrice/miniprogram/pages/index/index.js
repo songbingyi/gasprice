@@ -19,6 +19,7 @@ Page({
         this.formaTime() //获取当前日期
         wx.getLocation({
             success: (res) => {
+                console.log(res)
                 this.setData({
                     hiddenLocation: false
                 })
@@ -29,22 +30,7 @@ Page({
                 })
             }
         })
-        wx.cloud.callFunction({
-            name: 'getWeatherInfo',
-            data: {
-                url: 'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefforecast3days',
-                formData: {
-                    lat: "39",
-                    lon: "116"
-                },
-            },
-            success: res => {
-                console.log(res)
-            },
-            fail: err => {
-                console.error('[云函数] [login] 调用失败', err)
-            }
-        })
+
     },
     //设置允许授权地理位置后的回调
     handle: function(e) {
@@ -69,6 +55,20 @@ Page({
                 m: nowDate.getMonth() + 1,
                 d: nowDate.getDate(),
                 w: this.data.weekName[nowDate.getDay() - 1]
+            }
+        })
+    },
+
+    getGasPrice: function(){
+        wx.cloud.callFunction({
+            name: 'getGasPrice',
+            data: {
+            },
+            success: res => {
+                console.log(res)
+            },
+            fail: err => {
+                console.error('[云函数] [getWeatherInfo] 调用失败', err)
             }
         })
     }
