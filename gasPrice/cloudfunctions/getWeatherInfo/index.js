@@ -7,18 +7,19 @@ cloud.init()
 cloud.init()
 
 exports.main = async (event, context) => {
-    if (event.formData) {
-        formData = event.formData;
-    } else {
-        formData = {
-            lat: '39.91488908',
-            lon: '116.40387397'
-        }
-    };
+    // if (event.formData) {
+    //   let  formData = event.formData;
+    // } else {
+    //   let  formData = {
+    //         lat: '39.91488908',
+    //         lon: '116.40387397'
+    //     }
+    // };
+    //123456789
     let options = {
         method: 'POST',
         url: 'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefforecast3days',
-        formData: formData,
+      formData: event.formData,
         headers: {
             'Authorization': 'APPCODE 312a0ea7c23b419e967bbf80f72cbc21'
         }

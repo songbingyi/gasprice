@@ -2,74 +2,94 @@
 const app = getApp()
 
 Page({
-    data: {
-        hiddenLocation: false, //是否获得经纬度
-        requestResult: '',
-        week: "周三",
-        region: ['中国', '北京市', ''], //位置信息初始值
-        formatTime: { //当前日期
-            m: '',
-            d: '',
-            w: ''
-        },
-        weekName: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天']
+  data: {
+    hiddenLocation: false, //是否获得经纬度
+    requestResult: '',
+    week: "周三",
+    region: ['中国', '北京市', ''], //位置信息初始值
+    formatTime: { //当前日期
+      m: '',
+      d: '',
+      w: ''
     },
+    latlon: {}, //当前经纬度 
+    weekName: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天']
+  },
 
-    onLoad: function() {
-        this.formaTime() //获取当前日期
-        wx.getLocation({
-            success: (res) => {
-                console.log(res)
-                this.setData({
-                    hiddenLocation: false
-                })
-            },
-            fail: (res) => {
-                this.setData({
-                    hiddenLocation: true
-                })
-            }
-        })
-
-    },
-    //设置允许授权地理位置后的回调
-    handle: function(e) {
-        if (e.detail.authSetting["scope.userLocation"]) {
-            this.setData({
-                hiddenLocation: false
-            })
-        } else {
-            this.setData({
-                hiddenLocation: true
-            })
-        }
-    },
-    bindRegionChange: function(e) {
-        console.log(e)
-    },
-    //获取当前日期
-    formaTime: function() {
-        let nowDate = new Date();
+  onLoad: function() {
+    this.formaTime() //获取当前日期
+    wx.getLocation({
+      success: (res) => {
         this.setData({
-            formatTime: {
-                m: nowDate.getMonth() + 1,
-                d: nowDate.getDate(),
-                w: this.data.weekName[nowDate.getDay() - 1]
-            }
+          latlon: {
+            lat: res.latitude,
+            lon: res.longitude
+          }
         })
-    },
+        this.setData({
+          hiddenLocation: false
+        })
+        this.getWeatherInfo()
+      },
+      fail: (res) => {
+        this.setData({
+          hiddenLocation: true
+        })
+      }
+    })
 
-    getGasPrice: function(){
-        wx.cloud.callFunction({
-            name: 'getGasPrice',
-            data: {
-            },
-            success: res => {
-                console.log(res)
-            },
-            fail: err => {
-                console.error('[云函数] [getWeatherInfo] 调用失败', err)
-            }
-        })
+  },
+  //设置允许授权地理位置后的回调
+  handle: function(e) {
+    if (e.detail.authSetting["scope.userLocation"]) {
+      this.setData({
+        hiddenLocation: false
+      })
+    } else {
+      this.setData({
+        hiddenLocation: true
+      })
     }
+  },
+  bindRegionChange: function(e) {
+    console.log(e)
+  },
+  //获取当前日期
+  formaTime: function() {
+    let nowDate = new Date();
+    this.setData({
+      formatTime: {
+        m: nowDate.getMonth() + 1,
+        d: nowDate.getDate(),
+        w: this.data.weekName[nowDate.getDay() - 1]
+      }
+    })
+  },
+
+  getGasPrice: function() {
+    wx.cloud.callFunction({
+      name: 'getGasPrice',
+      data: {
+        prov: '新疆'//TODO 地点传递参数
+      },
+      success: res => {
+        console.log(res)
+      },
+      fail: err => {
+        console.error('[云函数] [getWeatherInfo] 调用失败', err)
+      }
+    })
+  },
+  getWeatherInfo: function() {
+    wx.cloud.callFunction({
+      name: 'getWeatherInfo',
+      data: { formData: this.data.latlon},
+      success: res => {
+        console.log(res)
+      },
+      fail: err => {
+        console.error('[云函数] [getWeatherInfo] 调用失败', err)
+      }
+    })
+  }
 })
