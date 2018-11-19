@@ -25,20 +25,20 @@
     <!-- 汽油价格box -->
     <view class='gas-price-box'>
         <view class='gas-price-item'>
-            <text>89#汽油</text>
-            <text>7.56<text>元/升</text></text>
+            <text>92#汽油</text>
+            <text>{{CurrentcityGasPriceInfo.p92}}<text>元/升</text></text>
         </view>
         <view class='gas-price-item'>
-            <text>92#汽油(93#)</text>
-            <text>7.56<text>元/升</text></text>
+            <text>95#汽油</text>
+            <text>{{CurrentcityGasPriceInfo.p95}}<text>元/升</text></text>
         </view>
         <view class='gas-price-item'>
-            <text>95#汽油(97#)</text>
-            <text>7.56<text>元/升</text></text>
+            <text>98#汽油</text>
+            <text>{{CurrentcityGasPriceInfo.p98}}<text>元/升</text></text>
         </view>
         <view class='gas-price-item'>
-            <text>0#柴油(93#)</text>
-            <text>7.56<text>元/升</text></text>
+            <text>0#柴油</text>
+            <text>{{CurrentcityGasPriceInfo.p0}}<text>元/升</text></text>
         </view>
     </view>
     <!-- 温馨提示box -->

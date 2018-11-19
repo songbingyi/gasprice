@@ -19,7 +19,14 @@ Page({
             city: ''
         }, //如果没有地理位置 显示北京
         hasLocationInfo: false,
-        loading: false
+        loading: false,
+        CurrentcityGasPriceInfo: {
+            p92: '',
+            p95: '',
+            p98: '',
+            p0: ''
+        }
+
     },
 
     onLoad: function() {
@@ -41,7 +48,7 @@ Page({
                 })
                 this.getWeatherInfo()
             },
-            fail: (res) => {//如果获取经纬度失败，则显示中国北京,出现提示
+            fail: (res) => { //如果获取经纬度失败，则显示中国北京,出现提示
                 this.setData({
                     hiddenLocation: true,
                     currentCityInfo: {
@@ -81,16 +88,25 @@ Page({
     },
 
     getGasPrice: function() {
-        let provinceName = this.data.currentCityInfo.province.replace(/省/, "");
-        provinceName = this.data.currentCityInfo.province.replace(/市/, "");
+        let OprovinceName = this.data.currentCityInfo.province.replace(/省/, "");
+        let provinceName = OprovinceName.replace(/市/, "");
         wx.cloud.callFunction({
-        
+
             name: 'getGasPrice',
             data: {
                 prov: provinceName
             },
             success: res => {
-                console.log('getGasPrice',res)
+                console.log('getGasPrice', res)
+                this.setData({
+                    CurrentcityGasPriceInfo: {
+                        p92: res.result.p92,
+                        p95: res.result.p95,
+                        p98: res.result.p98,
+                        p0: res.result.p0,
+                    }
+                })
+
             },
             fail: err => {
                 console.error('[云函数] [getWeatherInfo] 调用失败', err)
