@@ -50,11 +50,11 @@
 
         <view class='today-box'>
             <view class='row1'>
-                <text>今天</text>
-                <text>良</text>
+                <text>当前</text>
+                <text>晴</text>
             </view>
             <view class='row2'>
-                <text>晴</text>
+                <text>良</text>
                 <text>21/9°C</text>
             </view>
         </view>
@@ -62,18 +62,18 @@
         <view class='tomorrow-box'>
             <view class='row1'>
                 <text>明天</text>
-                <text>良</text>
+                <text>多云</text>
             </view>
 
             <view class='row2'>
-                <text>晴</text>
+                <text></text>
                 <text>21/9°C</text>
             </view>
         </view>
 
     </view>
     
-<button type='primary' bindtap='getGasPrice'>获取油价</button>
+<!-- <button type='primary' bindtap='getGasPrice'>获取油价</button> -->
 </view>
 
 

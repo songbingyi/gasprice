@@ -15,7 +15,6 @@ exports.main = async (event, context) => {
     //         lon: '116.40387397'
     //     }
     // };
-    //123456789
     let options = {
         method: 'POST',
         url: 'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefforecast3days',
@@ -25,6 +24,16 @@ exports.main = async (event, context) => {
         }
     }
     const result = rp(options).then(function (body) {
+        let body = JSON.parse(body);
+      // let temp_today = body.data.forecast.tempDay + '/' + body.data.forecast.tempNight;
+        let info = {
+          weather_today:{
+            temp_today: body.data.forecast.tempDay + '/' + body.data.forecast.tempNight,
+            conditionId_day: body.data.forecast.conditionIdDay,
+            condition_day: conditionDay
+
+          }
+        }
         return body
 
     }).catch(function (err) {
