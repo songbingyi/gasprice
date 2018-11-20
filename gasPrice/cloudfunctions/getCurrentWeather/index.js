@@ -17,24 +17,15 @@ exports.main = async (event, context) => {
     // };
     let options = {
         method: 'POST',
-        url: 'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefforecast3days',
-      formData: event.formData,
+        url: 'http://apifreelat.market.alicloudapi.com/whapi/json/aliweather/briefcondition',
+        formData: event.formData,
         headers: {
             'Authorization': 'APPCODE 312a0ea7c23b419e967bbf80f72cbc21'
         }
     }
     const result = rp(options).then(function (body) {
         let obody = JSON.parse(body);
-      // let temp_today = body.data.forecast.tempDay + '/' + body.data.forecast.tempNight;
-        let info = {
-            weather_tomrrow:{
-                temp_today: obody.data.forecast[1].tempDay + '/' + obody.data.forecast[1].tempNight,
-                conditionId_day: obody.data.forecast[1].conditionIdDay,
-                condition_day: obody.data.forecast[1].conditionDay
-
-          }
-        }
-        return info
+        return obody.data.condition
 
     }).catch(function (err) {
         console.log(err)

@@ -54,8 +54,8 @@
                 <text>晴</text>
             </view>
             <view class='row2'>
-                <text>良</text>
-                <text>21/9°C</text>
+                <text></text>
+                <text>{{todayWeatherInfo.temp}}°C</text>
             </view>
         </view>
         <view class='spt'></view>

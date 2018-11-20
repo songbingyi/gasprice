@@ -25,6 +25,11 @@ Page({
             p95: '',
             p98: '',
             p0: ''
+        },
+        todayWeatherInfo:{
+            condition:'...',
+            temp:'...',
+            icon:''
         }
 
     },
@@ -85,7 +90,6 @@ Page({
         title: '更新数据中',
       })
         wx.cloud.callFunction({
-
             name: 'getGasPrice',
             data: {
                 prov: provinceName
@@ -164,6 +168,7 @@ Page({
                     hiddenLocation: false //获取到经纬度，隐藏提示
                 })
                 this.getWeatherInfo()
+                this.getCurrentWeather()
             },
             fail: (res) => { //如果获取经纬度失败，则显示中国北京,出现提示
                 this.setData({
@@ -174,6 +179,26 @@ Page({
                     },
                 })
                 this.getGasPrice('北京')
+            }
+        })
+    },
+    //获取当前天气
+    getCurrentWeather:function(){
+        wx.cloud.callFunction({
+            name: 'getCurrentWeather',
+            data: {
+                formData: this.data.latlon
+            },
+            success: res => {
+                console.log('getCurrentWeather', res)
+                this.setData({
+                    todayWeatherInfo:res.result
+                })
+                wx.hideLoading()
+            },
+            fail: err => {
+                console.error('[云函数] [getWeatherInfo] 调用失败', err)
+                wx.hideLoading()
             }
         })
     }
