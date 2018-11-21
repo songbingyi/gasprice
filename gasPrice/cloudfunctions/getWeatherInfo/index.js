@@ -27,12 +27,10 @@ exports.main = async (event, context) => {
         let obody = JSON.parse(body);
       // let temp_today = body.data.forecast.tempDay + '/' + body.data.forecast.tempNight;
         let info = {
-            weather_tomrrow:{
-                temp_today: obody.data.forecast[1].tempDay + '/' + obody.data.forecast[1].tempNight,
+              temp: obody.data.forecast[1].tempNight +'/'+ obody.data.forecast[1].tempDay,
                 conditionId_day: obody.data.forecast[1].conditionIdDay,
                 condition_day: obody.data.forecast[1].conditionDay
-
-          }
+       
         }
         return info
 

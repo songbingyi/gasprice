@@ -1,79 +1,84 @@
 <!--index.wxml-->
 <view class="container">
-    <!-- 当前位置box -->
+  <!-- 当前位置box -->
 
 
-    <!-- <text>陕西省 西安市</text> -->
-    <picker mode="region" bindchange="bindRegionChange"  >
-        <view class="picker" class='location-bar' >
-            <icon hidden="{{hiddenLocation}}" class="icon-location"></icon>
-            {{currentCityInfo.province}} {{currentCityInfo.city}}
-            <icon class="icon-more"></icon>
-        </view>
+  <!-- <text>陕西省 西安市</text> -->
+  <picker mode="region" bindchange="bindRegionChange">
+    <view class="picker" class='location-bar'>
+      <icon hidden="{{hiddenLocation}}" class="icon-location"></icon>
+      {{currentCityInfo.province}} {{currentCityInfo.city}}
+      <icon class="icon-more"></icon>
+    </view>
 
-    </picker>
-    <!-- 当前时间box -->
-    <text class='time-bar' hidden='{{hiddenLocation}}'> {{formatTime.m}}月{{formatTime.d}}号 {{formatTime.w}}</text>
-    <!--未授权地理位置box-->
-    <view class='auz-bar' hidden="{{hiddenLocation == false}}">
-        <text>请点击上方城市名称选择需要查询的城市
+  </picker>
+  <!-- 当前时间box -->
+  <text class='time-bar' hidden='{{hiddenLocation}}'> {{formatTime.m}}月{{formatTime.d}}号 {{formatTime.w}}</text>
+  <!--未授权地理位置box-->
+  <view class='auz-bar' hidden="{{hiddenLocation == false}}">
+    <text>请点击上方城市名称选择需要查询的城市
         或点击"授权位置"进行位置授权设置。</text>
-    </view>
-    <button hidden="{{hiddenLocation  == false}}" type="primary" size='mini' open-type="openSetting" class="auz-btn" bindopensetting="handle">授权地理位置</button>
-    
+  </view>
+  <button hidden="{{hiddenLocation  == false}}" type="primary" size='mini' open-type="openSetting" class="auz-btn" bindopensetting="handle">授权地理位置</button>
 
-    <!-- 汽油价格box -->
-    <view class='gas-price-box'>
-        <view class='gas-price-item'>
-            <text>92#汽油</text>
-            <text>{{CurrentcityGasPriceInfo.p92}}<text>元/升</text></text>
-        </view>
-        <view class='gas-price-item'>
-            <text>95#汽油</text>
-            <text>{{CurrentcityGasPriceInfo.p95}}<text>元/升</text></text>
-        </view>
-        <view class='gas-price-item'>
-            <text>98#汽油</text>
-            <text>{{CurrentcityGasPriceInfo.p98}}<text>元/升</text></text>
-        </view>
-        <view class='gas-price-item'>
-            <text>0#柴油</text>
-            <text>{{CurrentcityGasPriceInfo.p0}}<text>元/升</text></text>
-        </view>
-    </view>
-    <!-- 温馨提示box -->
-    <view class='tips-box'>
-        <text>预计下次油价上涨日期：2018.10.15</text>
-    </view>
-    <!-- 今明天气 -->
-    <view class='weather-box'>
 
-        <view class='today-box'>
-            <view class='row1'>
-                <text>当前</text>
-                <text>晴</text>
-            </view>
-            <view class='row2'>
-                <text></text>
-                <text>{{todayWeatherInfo.temp}}°C</text>
-            </view>
-        </view>
-        <view class='spt'></view>
-        <view class='tomorrow-box'>
-            <view class='row1'>
-                <text>明天</text>
-                <text>多云</text>
-            </view>
-
-            <view class='row2'>
-                <text></text>
-                <text>21/9°C</text>
-            </view>
-        </view>
-
+  <!-- 汽油价格box -->
+  <view class='gas-price-box'>
+    <view class='gas-price-item'>
+      <text>92#汽油</text>
+      <text>{{CurrentcityGasPriceInfo.p92}}<text>元/升</text></text>
     </view>
-    
-<!-- <button type='primary' bindtap='getGasPrice'>获取油价</button> -->
+    <view class='gas-price-item'>
+      <text>95#汽油</text>
+      <text>{{CurrentcityGasPriceInfo.p95}}<text>元/升</text></text>
+    </view>
+    <view class='gas-price-item'>
+      <text>98#汽油</text>
+      <text>{{CurrentcityGasPriceInfo.p98}}<text>元/升</text></text>
+    </view>
+    <view class='gas-price-item'>
+      <text>0#柴油</text>
+      <text>{{CurrentcityGasPriceInfo.p0}}<text>元/升</text></text>
+    </view>
+  </view>
+  <!-- 温馨提示box -->
+  <view class='tips-box'>
+    <text>{{priceChangeText}}
+    </text>
+  </view>
+
+
+  <!-- 今明天气 -->
+  <view class='weather-box' hidden='{{hiddenLocation}}'>
+
+    <view class='today-box'>
+      <view class='row1'>
+        <text>当前</text>
+        <image class='weatherIcon' src="{{weatherIcontoday}}"></image>
+       
+      </view>
+      <view class='row2'>
+      <text>{{todayWeatherInfo.temp}}°C</text>
+          <text>晴</text> 
+
+      </view>
+    </view>
+    <view class='spt'></view>
+    <view class='tomorrow-box'>
+      <view class='row1'>
+        <text>明天</text>
+          <image class='weatherIcon' src="{{weatherIcontoTomorrow}}"></image>
+      </view>
+
+      <view class='row2'>
+      <text>{{weatherTomorrowInfo.temp}}°C</text>
+          <text>{{weatherTomorrowInfo.condition_day}}</text> 
+      </view>
+    </view>
+
+  </view>
+
+  <!-- <button type='primary' bindtap='getGasPrice'>获取油价</button> -->
 </view>
 
 
