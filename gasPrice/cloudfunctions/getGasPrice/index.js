@@ -20,7 +20,7 @@ exports.main = async(event, context) => {
     let gasPriceInfo = JSON.parse(body)
     let gasPriceList = gasPriceInfo.showapi_res_body.list
     let cityGasPriceInfo = gasPriceList.find(function (element) {
-      return element.prov == event.prov
+      return element.prov.substr(0,2) == event.prov
     });
     return cityGasPriceInfo;
 

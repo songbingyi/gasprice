@@ -57,24 +57,18 @@ page {
 }
 
 .tips-box {
-  margin-top: 20px;
-  width: 100%;
-  padding: 18rpx 0;
-  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4); /* Firefox 3.6 - 15 */
-  background: linear-gradient(left, rgba(0, 0, 0, 0), #e1eef4); /* 标准的语法（必须放在最后） */
-
-}
-
-.tips-box text {
-  width: 76%;
-  display: inline-block;
-  margin-left: 12%;
-}
-
-.tips-box text {
+  margin-top: 40rpx;
   font-size: 28rpx;
+  width: 76%;
+  background-color: #e4f1fa;
+  padding: 18rpx 28rpx;
+  box-sizing:border-box;
+
+}
+
+.tips-box text {
+  display: inline-block;
+    font-size: 28rpx;
 }
 
 .spt {

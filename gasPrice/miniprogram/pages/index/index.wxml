@@ -43,13 +43,12 @@
   </view>
   <!-- 温馨提示box -->
   <view class='tips-box'>
-    <text>{{priceChangeText}}
-    </text>
+    <text>{{priceChangeText}}</text>
   </view>
 
 
   <!-- 今明天气 -->
-  <view class='weather-box' hidden='{{hiddenLocation}}'>
+  <view class='weather-box' hidden='{{hiddenWeatherBox}}'>
 
     <view class='today-box'>
       <view class='row1'>
